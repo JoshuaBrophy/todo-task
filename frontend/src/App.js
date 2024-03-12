@@ -15,7 +15,7 @@ const App = () => {
             element={<Home />}
           />
           <Route
-            path='/'
+            path='/add-todo'
             element={<AddTodo />}
           />
           <Route
