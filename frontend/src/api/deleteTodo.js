@@ -1,3 +1,4 @@
+
 const API_URL = `http://localhost:4000/todos/item:id`
 
 export const deleteTodo = async (todo) => {
@@ -8,7 +9,7 @@ export const deleteTodo = async (todo) => {
         method: 'DELETE',
         // content type?
         headers: {
-            "Content Type":"application/json"            
+            "Content-Type":"application/json"            
         }
     })
     // convert to json
