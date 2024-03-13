@@ -11,7 +11,7 @@ export const addTodo = async (todo) => {
         body: JSON.stringify(obj),
         // content type?
         headers: {
-            "Content Type": "application/json",
+            "Content-Type": "application/json",
         }
     })
     const json = await response.json()
