@@ -19,6 +19,17 @@ mongoose.connect(process.env.MONGODB_URL)
     })
 })
 
-.catch((error) => {
-console.log(error)
-})
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ message: 'Internal Server Error' });
+  });
+  
+  mongoose.connect(process.env.MONGODB_URL)
+    .then(() => {
+      app.listen(4000, () => {
+        console.log('listening on port 4000, connected to db');
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
