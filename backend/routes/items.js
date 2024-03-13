@@ -9,7 +9,9 @@ router.get('/items', itemsController.getTodos)
 router.get("/item/:id", itemsController.getTodo);
 router.delete('/item/:id', itemsController.deleteTodo)
 router.post('/item',itemsController.createTodo)
+
 router.patch("/item/:id", itemsController.editTodo)
+
 
 module.exports = router
 
