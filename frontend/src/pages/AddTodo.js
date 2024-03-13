@@ -7,7 +7,7 @@ const AddTodo = () => {
     const handler = async (e) => {
         e.preventDefault()
         // what function will run?
-        let response = addTodo(input) 
+        let response = addTodo(userInput) 
         console.log(response)
     }
 
