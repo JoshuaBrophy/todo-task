@@ -1,13 +1,23 @@
 import { useState } from "react"
+import { AddTodo } from "../api"
 
-const AddTodo = () => {
+const addTodo = () => {
     const [userInput, setUserInput] = useState("")
+
+    const handleChange = (e) => {
+        setUserInput(e.target.value);
+    };
 
     const handler = async (e) => {
         e.preventDefault()
         // what function will run?
-        let response = await 
+        try {
+            let response = await addTodo (userInput)
         console.log(response)
+        } catch (error) {
+            console.error('Error adding todo:', error)
+        }
+        setUserInput("");
     }
 
     return (
@@ -19,7 +29,7 @@ const AddTodo = () => {
                 <input 
                 type="text"
                     value={userInput}
-                    onChange={() => {}}
+                    onChange={handleChange}
                 />
                 <button type="submit">submit</button>
             </form>
