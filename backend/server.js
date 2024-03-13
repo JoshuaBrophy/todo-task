@@ -11,7 +11,7 @@ if (missingEnvVars.length > 0) {
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const itemRoutes = require('./routes/items')
+const itemRoutes = require('./routes/itemsRoute')
 const app = express()
 
 app.use(cors())
