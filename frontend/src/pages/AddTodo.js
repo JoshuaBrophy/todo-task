@@ -1,4 +1,5 @@
 import { useState } from "react"
+import {addTodo} from "../api/add"
 
 const AddTodo = () => {
     const [userInput, setUserInput] = useState("")
@@ -6,7 +7,7 @@ const AddTodo = () => {
     const handler = async (e) => {
         e.preventDefault()
         // what function will run?
-        let response = await 
+        let response = addTodo(input) 
         console.log(response)
     }
 
@@ -19,7 +20,7 @@ const AddTodo = () => {
                 <input 
                 type="text"
                     value={userInput}
-                    onChange={() => {}}
+                    onChange={(e) => setUserInput(e.target.value)}
                 />
                 <button type="submit">submit</button>
             </form>
