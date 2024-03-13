@@ -8,7 +8,7 @@ const itemsController = require('../controllers/items')
 router.get('/items', itemsController.getTodos)
 router.delete('/item/:id', itemsController.deleteTodo)
 router.post('/item',itemsController.createTodo)
-router.patch()
+router.patch('/item',itemsController.editTodo)
 
 module.exports = router
 
