@@ -1,20 +1,26 @@
-import { addTodo } from '../api/addTodo';
-const API_URL = `http://localhost:4000/todos/item`
+import React, { useState } from 'react';
 
-export const addTodo = async (todo) => {
-    // pass paramter to function
-    // create new object with 'text' key (depending on your Model)
-    let obj = { text: todo}
-    const response = await fetch(API_URL, {
-        // method type?
-        method: 'POST',
-        // sending body, stringify data
-        body: JSON.stringify(obj),
-        // content type?
-        headers: {
-            "Content Type": "application/json",
-        }
-    })
-    const json = await response.json()
-    return json
-} 
+const AddTodo = () => {
+  const [input, setInput] = useState('');
+
+  const handler = async (e) => {
+    e.preventDefault();
+    // ... rest of your code
+  };
+
+  return (
+    <div>
+      <h1>add item</h1>
+      <form onSubmit={handler}>
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button type="submit">submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default AddTodo;
