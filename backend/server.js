@@ -1,5 +1,13 @@
 require('dotenv').config()
 
+const requiredEnvVars = ['MONGODB_URL'];
+const missingEnvVars = requiredEnvVars.filter((envVar) => !process.env[envVar]);
+
+if (missingEnvVars.length > 0) {
+  console.error(`Missing environment variables: ${missingEnvVars.join(', ')}`);
+  process.exit(1);
+}
+
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
