@@ -1,5 +1,5 @@
 import { useState } from "react"
-import {addTodo} from "../api/add"
+import { addTodo } from '../api/addTodo';
 
 const AddTodo = () => {
     const [userInput, setUserInput] = useState("")
