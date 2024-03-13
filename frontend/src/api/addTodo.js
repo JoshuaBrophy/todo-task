@@ -1,3 +1,4 @@
+import { addTodo } from '../api/addTodo';
 const API_URL = `http://localhost:4000/todos/item`
 
 export const addTodo = async (todo) => {
