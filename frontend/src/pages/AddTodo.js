@@ -1,12 +1,15 @@
+
 import { useState } from "react";
 import { addTodo } from '../api/addTodo';
 
 const AddTodo = () => {
     const [userInput, setUserInput] = useState("");
 
+
     const handleChange = (e) => {
         setUserInput(e.target.value);
     };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,6 +26,7 @@ const AddTodo = () => {
         <div>
             <h1>Add Item</h1>
             <form onSubmit={handleSubmit}>
+
                 <input 
                     type="text"
                     value={userInput}
