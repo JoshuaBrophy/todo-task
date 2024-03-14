@@ -49,6 +49,7 @@ const EditTodo = () => {
             <input 
                 onChange={(e) => setUserInput(e.target.value)}
                 value={userInput}
+                value2={toUpdate} 
 
                 value2={toUpdate}
 
