@@ -32,12 +32,13 @@ const EditTodo = () => {
 
     useEffect(() => {
         const fetchTodo = async () => {
-            let data = await getTodo(id);
-            setToUpdate(data);
-        };
-        fetchTodo();
-    }, []);
 
+            let data = await getTodo(id)
+            setToUpdate(data)
+            setUserInput(data.text)
+        }
+        fetchTodo()
+    },[id]);
 
     return (
         <div>
@@ -47,6 +48,9 @@ const EditTodo = () => {
             <input 
                 onChange={(e) => setUserInput(e.target.value)}
                 value={userInput}
+
+                value2={toUpdate}
+                onChange={handleChange}
 
             />
             <button onClick={submitHandler}>Submit</button>
