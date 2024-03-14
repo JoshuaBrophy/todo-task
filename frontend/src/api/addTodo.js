@@ -1,19 +1,19 @@
-const API_URL = `http://localhost:4000`
+const API_URL = `http://localhost:4000/todos/item`
 
 export const addTodo = async (todo) => {
     // pass paramter to function
     // create new object with 'text' key (depending on your Model)
-    let obj = {  }
-    const response = await fetch(``, {
+    let obj = { text: todo}
+    const response = await fetch(API_URL, {
         // method type?
-        method: '',
+        method: 'POST',
         // sending body, stringify data
-        body: JSON.stringify(),
+        body: JSON.stringify(obj),
         // content type?
         headers: {
-            
+            "Content-Type": "application/json",
         }
     })
     const json = await response.json()
     return json
-}
+} 
