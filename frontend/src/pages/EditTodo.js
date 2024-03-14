@@ -8,30 +8,42 @@ const EditTodo = () => {
     const [toUpdate, setToUpdate] = useState('')
     const [userInput, setUserInput] = useState('')
 
-    const submitHandler = async () => {
-        let obj = {
-            _id: toUpdate._id,
-            text: userInput
-        }
+    const handleChange = (e) => {
+        setUserInput(e.target.value)
+    }
 
-        alert('edited item')
+    const submitHandler = async () => {
+        try {
+            await updateTodo({
+                _id: toUpdate._id,
+                text: userInput
+            })
+            alert('edited item')
+        } catch (error){
+            console.error('Error editing todo:', error)
+            alert('Failed to edot item')
+        }
+        
     }
 
     useEffect(() => {
         const fetchTodo = async () => {
             let data = await getTodo(id)
             setToUpdate(data)
+            setUserInput(data.text)
         }
         fetchTodo()
-    },[])
+    },[id])
     return (
         <div>
-            <h1>edit</h1>
+            <h1>Edit</h1>
             <h2>{toUpdate.text}</h2>
-            <input 
-                onChange={() => {}}
+            <input
+                type="text"
+                value={userInput}
+                onChange={handleChange}
             />
-            <button onClick={submitHandler}>submit</button>
+            <button onClick={submitHandler}>Submit</button>
         </div>
     )
 }
