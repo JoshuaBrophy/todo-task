@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { readTodos } from "../api/readTodos";
 import Card from '../components/Card'
 import { deleteTodo } from "../api/deleteTodo";
+import '../css/Home.css'
 
 const Home = () => {
     const [todos, setTodos] = useState([]);
