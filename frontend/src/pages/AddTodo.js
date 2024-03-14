@@ -1,45 +1,37 @@
-import { useState } from "react"
-
+import { useState } from "react";
 import { addTodo } from '../api/addTodo';
 
-
-const addTodo = () => {
-    const [userInput, setUserInput] = useState("")
+const AddTodo = () => {
+    const [userInput, setUserInput] = useState("");
 
     const handleChange = (e) => {
         setUserInput(e.target.value);
     };
 
-    const handler = async (e) => {
-        e.preventDefault()
-        // what function will run?
-
-        let response = addTodo(userInput) 
-
-        console.log(response)
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            let response = await addTodo(userInput);
+            console.log(response);
+            setUserInput("");
         } catch (error) {
-            console.error('Error adding todo:', error)
+            console.error('Error adding todo:', error);
         }
-        setUserInput("");
-    }
+    };
 
     return (
         <div>
-            <h1>
-                add item
-            </h1>
-            <form onSubmit={handler}>
+            <h1>Add Item</h1>
+            <form onSubmit={handleSubmit}>
                 <input 
-                type="text"
+                    type="text"
                     value={userInput}
-
-                    onChange={(e) => setUserInput(e.target.value)}
-
+                    onChange={handleChange}
                 />
-                <button type="submit">submit</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default AddTodo
+export default AddTodo;
