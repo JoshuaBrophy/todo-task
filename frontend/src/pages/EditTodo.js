@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getTodo } from "../api/getTodo";
 import { updateTodo } from "../api/updateTodo";
 import { addTodo } from "../api/addTodo"; // Import addTodo function
+import '../css/EditTodo.css'
 
 const EditTodo = () => {
     const { id } = useParams();
@@ -32,12 +33,13 @@ const EditTodo = () => {
 
     useEffect(() => {
         const fetchTodo = async () => {
-            let data = await getTodo(id);
-            setToUpdate(data);
-        };
-        fetchTodo();
-    }, []);
 
+            let data = await getTodo(id)
+            setToUpdate(data)
+            setUserInput(data.text)
+        }
+        fetchTodo()
+    },[id]);
 
     return (
         <div>
@@ -47,6 +49,8 @@ const EditTodo = () => {
             <input 
                 onChange={(e) => setUserInput(e.target.value)}
                 value={userInput}
+
+                value2={toUpdate}
 
             />
             <button onClick={submitHandler}>Submit</button>

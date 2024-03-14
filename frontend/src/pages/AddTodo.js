@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { addTodo } from '../api/addTodo'; // Corrected import path
+import '../css/AddTodo.css'
 
 const AddTodo = () => {
     const [userInput, setUserInput] = useState("");
@@ -10,27 +11,29 @@ const AddTodo = () => {
         setUserInput(e.target.value);
     };
 
-    const handler = async (e) => {
 
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // What function will run?
-        let response = await addTodo(userInput); // Await for the response
-        console.log(response);
+        try {
+            let response = await addTodo(userInput);
+            console.log(response);
+            setUserInput("");
+        } catch (error) {
+            console.error('Error adding todo:', error);
+        }
     };
-
 
     return (
         <div>
-            <h1>add item</h1>
-            <form onSubmit={handler}>
+            <h1>Add Item</h1>
+            <form onSubmit={handleSubmit}>
+
                 <input 
                     type="text"
                     value={userInput}
-
-                    onChange={(e) => setUserInput(e.target.value)}
-
+                    onChange={handleChange}
                 />
-                <button type="submit">submit</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     );
