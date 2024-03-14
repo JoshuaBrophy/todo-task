@@ -48,9 +48,7 @@ const EditTodo = () => {
             <input 
                 onChange={(e) => setUserInput(e.target.value)}
                 value={userInput}
-
-                value2={toUpdate}
-                onChange={handleChange}
+                value2={toUpdate} 
 
             />
             <button onClick={submitHandler}>Submit</button>

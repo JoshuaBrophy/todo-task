@@ -7,7 +7,7 @@ export const getTodo = async (id) => {
         if (!response.ok) {
             throw new Error('Failed to fetch todo');
         }
- // Parse the JSON response from the server
+        // Parse the JSON response from the server
         const todo = await response.json();
         return todo;
     } catch (error) {
