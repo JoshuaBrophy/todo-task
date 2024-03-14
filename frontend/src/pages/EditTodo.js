@@ -33,7 +33,7 @@ const EditTodo = () => {
             setUserInput(data.text)
         }
         fetchTodo()
-    },[id])
+    },[id]);
     return (
         <div>
             <h1>Edit</h1>
@@ -41,6 +41,7 @@ const EditTodo = () => {
             <input
                 type="text"
                 value={userInput}
+                value2={toUpdate}
                 onChange={handleChange}
             />
             <button onClick={submitHandler}>Submit</button>
