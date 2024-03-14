@@ -9,7 +9,12 @@ const EditTodo = () => {
     const [toUpdate, setToUpdate] = useState('');
     const [userInput, setUserInput] = useState('');
 
+    const handleChange = (e) => {
+        setUserInput(e.target.value)
+    }
+
     const submitHandler = async () => {
+
         let obj = {
             _id: toUpdate._id,
             text: userInput
@@ -33,15 +38,18 @@ const EditTodo = () => {
         fetchTodo();
     }, []);
 
+
     return (
         <div>
-            <h1>edit</h1>
+            <h1>Edit</h1>
             <h2>{toUpdate.text}</h2>
+
             <input 
                 onChange={(e) => setUserInput(e.target.value)}
                 value={userInput}
+
             />
-            <button onClick={submitHandler}>submit</button>
+            <button onClick={submitHandler}>Submit</button>
         </div>
     );
 }

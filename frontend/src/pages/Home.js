@@ -6,6 +6,16 @@ import { deleteTodo } from "../api/deleteTodo";
 const Home = () => {
     const [todos, setTodos] = useState([]);
 
+
+    const deleteHandler = async (todoId) => {
+      try{
+        await deleteTodo(todoId)
+        setTodos(prevTodos => prevTodos.filter(todo => todo._id !== todoId))
+      }catch (error) {
+        console.error('Error deleting todo:', error);
+      }
+    }
+
     useEffect(() => {
         const fetchTodos = async () => {
             let data = await readTodos();
